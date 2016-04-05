@@ -46,7 +46,7 @@ def main():
 
 
 def hiring_an_item(items_available):
-    
+
     return
 
 
