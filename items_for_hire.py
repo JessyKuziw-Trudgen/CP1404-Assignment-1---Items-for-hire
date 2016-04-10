@@ -85,12 +85,12 @@ def main():
     items_no_longer_available = []
     items_available_again = []
     items_for_hire = []
-    items = open("items.csv", "r+")
+    items = open("items.csv", "r+")  # opens file in read and write mode
     print("Items for Hire - by Jessy Kuziw")
     for line in items:
         items_for_hire.append("{0}".format(line).strip())
-        items_for_hire = [w.replace(IN, "").strip() for w in items_for_hire]
-        items_for_hire = [w.replace(OUT, "*").strip() for w in items_for_hire]
+        items_for_hire = [w.replace(IN, "").strip() for w in items_for_hire]  # replaces "in" with ""
+        items_for_hire = [w.replace(OUT, "*").strip() for w in items_for_hire]  # replaces "out" with "*"
     print("{} items loaded from items.csv".format(len(items_for_hire)), end='')
     for item in items_for_hire:
         if item not in items_available and "*" not in item:
@@ -115,7 +115,7 @@ def main():
             item_hired = hiring_an_item(items_available)
             index_to_remove = item_hired.pop(-1)
             items_available.remove(items_available[index_to_remove])
-            item_holder = str(",".join(item_hired[:]))
+            item_holder = str(",".join(item_hired[:]))  # adds item_hired as a string to a temp holding variable
             items_no_longer_available.append(item_holder)
             items_not_available.append(','.join(items_no_longer_available[:]))
             items_no_longer_available = []
@@ -124,7 +124,7 @@ def main():
             item_returned = returning_item(items_not_available)
             index_to_remove = item_returned.pop(-1)
             items_not_available.remove(items_not_available[index_to_remove])
-            item_holder = ",".join(item_returned[:])
+            item_holder = ",".join(item_returned[:])  # adds item_returned as a string to a temp holding variable
             items_available_again.append(item_holder)
             items_available.append(','.join(items_available_again[:]))
             menu_input = items_for_hire_main_menu().upper()
